@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duane Paloma - My Mermaid Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #ff9ecf, #ff4d6d);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    max-width: 600px;
+    z-index: 2;
+    animation: float 3s ease-in-out infinite;
+}
+
+h1 { font-size: 2.7rem; margin-bottom: 10px; }
+p { font-size: 1.2rem; }
+
+button {
+    background: white;
+    color: #ff4d6d;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 10px;
+    position: relative;
+}
+
+button:hover { transform: scale(1.1); }
+
+.ocean {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(180deg, #4facfe, #00c6ff);
+    border-top-left-radius: 50% 20%;
+    border-top-right-radius: 50% 20%;
+}
+
+.mermaid {
+    position: absolute;
+    bottom: 15%;
+    left: -200px;
+    font-size: 80px;
+    animation: swim 15s linear infinite;
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: rise 6s linear infinite;
+}
+
+@keyframes swim {
+    0% { left: -200px; }
+    100% { left: 110%; }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes rise {
+    0% { transform: translateY(0); opacity:1; }
+    100% { transform: translateY(-800px); opacity:0; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Duane Paloma ❤️</h1>
+    <p>My beautiful mermaid queen 🧜‍♀️✨</p>
+    <p>
+    Like the ocean under the sunset, you are magical, calm, powerful, and breathtaking.
+    Every moment with you feels like a fairytale beneath the waves.
+    </p>
+
+    <h2>Will you be my Valentine? 💘</h2>
+
+    <button onclick="yesClicked()">Yes 💖</button>
+    <button id="noBtn" onmouseover="moveButton()">No 🙈</button>
+</div>
+
+<div class="ocean"></div>
+<div class="mermaid">🧜‍♀️</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Yes button effect
+function yesClicked() {
+    alert("You just made me the happiest man alive 💕🧜‍♀️ I promise to love you deeper than the ocean and brighter than the stars ✨❤️");
+}
+
+// Moving No button
+function moveButton() {
+    const button = document.getElementById('noBtn');
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    button.style.position = "absolute";
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
